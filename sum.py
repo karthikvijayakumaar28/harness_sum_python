@@ -10,7 +10,8 @@ print("A value is", A)
 print("B value is", B)
 print(f"Result: {RESULT}")
 
-# Export RESULT for Harness
-env_file = os.getenv("DRONE_OUTPUT", "/tmp/output")
-with open(env_file, "w") as f:
-    f.write(f"RESULT={RESULT}\n")
+# Export RESULT for Harness - write to DRONE_OUTPUT
+env_file = os.getenv("DRONE_OUTPUT")
+if env_file:
+    with open(env_file, "a") as f:  # Use 'a' (append) instead of 'w'
+        f.write(f"RESULT={RESULT}\n")
