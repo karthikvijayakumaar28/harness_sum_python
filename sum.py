@@ -15,5 +15,5 @@ print(f"Result: {RESULT}")
 
 # Export RESULT for Harness
 env_file = os.getenv("DRONE_OUTPUT", "/tmp/output")
-with open(env_file, "a") as f:
+with open(env_file, "w") as f:
     f.write(f"RESULT={RESULT}\n")
